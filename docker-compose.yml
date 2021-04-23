@@ -1,0 +1,24 @@
+version: "3.8"
+
+services:
+  db:
+    image: dimagi/docker-postgresql  # required for plproxy/commcare dev
+    # persist data beyond lifetime of container
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+  redis:
+    image: redis
+    # persistent storage
+    command: redis-server --appendonly yes
+    volumes:
+      - redis_data:/data
+    ports:
+      - "6379:6379"
+volumes:
+  postgres_data:
+  redis_data:
