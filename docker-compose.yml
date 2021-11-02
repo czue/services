@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   db:
-    image: dimagi/docker-postgresql  # required for plproxy/commcare dev
+    image: postgres
     # persist data beyond lifetime of container
     volumes:
       - postgres_data:/var/lib/postgresql/data/
